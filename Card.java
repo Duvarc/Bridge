@@ -23,8 +23,15 @@ public class Card implements Comparable {
 		if (thisValue > otherValue) {
 			return 1;
 		}
-		else {
-			return -1
+		else if (otherValue > thisValue) {
+			return -1;
 		}
+		else {
+			return 0;
+		}
+	}
+
+	public String toString() {
+		return rank + " of " + Utils.getSuitString(card.suit);
 	}
 }
