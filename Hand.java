@@ -1,7 +1,13 @@
+import java.util.ArrayList;
+
 public class Hand {
 
 	private int size;
 	private int value;
+
+	private int[] pointsBySuit;
+
+	private int pointsHAND;
 
 	private ArrayList<Card> CLUBS;
 	private ArrayList<Card> DIAMONDS;
@@ -13,10 +19,13 @@ public class Hand {
 	private new ArrayList<Card> hand;
 
 	public Hand() {
+
 		CLUBS = new ArrayList<Card>(13);
 		DIAMONDS = new ArrayList<Card>(13);
 		HEARTS = new ArrayList<Card>(13);
 		SPADES = new ArrayList<Card>(13);
+
+		pointsBySuit = new int[4];
 
 		hand = new ArrayList<ArrayList<Card>>(4);
 
@@ -27,15 +36,58 @@ public class Hand {
 	}
 
 	public void add(Card card) {
-		hand.get(card.suit).add(card);
+		suit = card.suit;
+
+		hand.get(suit).add(card);
 	}
 
 	public void play(Card card) {
 
 	}
 
-	public int pointValue() {
-		int sum = 0;
+	public void calculatePoints() {
+
+		for (int s = 0; s < 4; s++) {
+			for (int c = 0; c < hand.get(s).size(); c++) {
+
+				card = hand.get(s).get(c);
+				rank = hand.get(s).get(c).getRank();
+				
+				//Check for high card points - 4-3-2-1 method
+
+				//If card is an ace
+				if (rank == 1) {
+					pointsBySuit[suit] += 4;
+				}
+				//Else if card is a King, Queen, or Jack
+				else if (rank >= 11) {
+					pointsBySuit[suit] += rank - 10;
+				}
+			}
+
+			//Long suit points - add 1 point for each card over 4 cards
+			pointsBySuit[suit] += Math.max(0, cardsInSuit - 4);
+		}
+	}
+
+	public int pointsCLUBS() {
+		return pointsBySuit[0];
+	}
+
+	public int pointsDIAMONDS() {
+		return pointsBySuit[1];
+	}
+
+	public int pointsHEARTS() {
+		return pointsBySuit[2];
+	}
+
+	public int pointsSPADES() {
+		return pointsBySuit[3];
+	}
+
+	public int pointsHAND() {
+		return pointsCLUBS + pointsDIAMONDS + pointsHEARTS + pointsHEARTS;
 	}
 
 	public void sort() {
