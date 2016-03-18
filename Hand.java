@@ -9,10 +9,10 @@ public class Hand {
 
 	private int pointsHAND;
 
-	private ArrayList<Card> CLUBS;
-	private ArrayList<Card> DIAMONDS;
-	private ArrayList<Card> HEARTS;
-	private ArrayList<Card> SPADES;
+	private ArrayList<Card> Clubs;
+	private ArrayList<Card> Diamonds;
+	private ArrayList<Card> Hearts;
+	private ArrayList<Card> Spades;
 
 	public ArrayList<ArrayList<Card>> hand;
 
@@ -20,19 +20,19 @@ public class Hand {
 
 	public Hand() {
 
-		CLUBS = new ArrayList<Card>(13);
-		DIAMONDS = new ArrayList<Card>(13);
-		HEARTS = new ArrayList<Card>(13);
-		SPADES = new ArrayList<Card>(13);
+		Clubs = new ArrayList<Card>(13);
+		Diamonds = new ArrayList<Card>(13);
+		Hearts = new ArrayList<Card>(13);
+		Spades = new ArrayList<Card>(13);
 
 		pointsBySuit = new int[4];
 
 		hand = new ArrayList<ArrayList<Card>>(4);
 
-		hand.add(CLUBS);
-		hand.add(DIAMONDS);
-		hand.add(HEARTS);
-		hand.add(SPADE);
+		hand.add(Clubs);
+		hand.add(Diamonds);
+		hand.add(Hearts);
+		hand.add(Spades);
 	}
 
 	public void add(Card card) {
@@ -70,24 +70,40 @@ public class Hand {
 		}
 	}
 
-	public int pointsCLUBS() {
+	public int pointsClubs() {
 		return pointsBySuit[0];
 	}
 
-	public int pointsDIAMONDS() {
+	public int pointsDiamonds() {
 		return pointsBySuit[1];
 	}
 
-	public int pointsHEARTS() {
+	public int pointsHearts() {
 		return pointsBySuit[2];
 	}
 
-	public int pointsSPADES() {
+	public int pointsSpades() {
 		return pointsBySuit[3];
 	}
 
 	public int pointsHAND() {
-		return pointsCLUBS + pointsDIAMONDS + pointsHEARTS + pointsHEARTS;
+		return pointsClubs + pointsDiamonds + pointsHearts + pointsHearts;
+	}
+
+	public int numberClubs() {
+		return Clubs.size();
+	}
+
+	public int numberDiamonds() {
+		return Diamonds.size();
+	}
+
+	public int numberHearts() {
+		return Hearts.size();
+	}
+
+	public int numberSpades() {
+		return Spades.size();
 	}
 
 	public void sort() {
