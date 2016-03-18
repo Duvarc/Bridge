@@ -1,14 +1,14 @@
 public class Bridge {
 
-	private Player SOUTH;
-	private Player WEST;
-	private Player NORTH;
-	private Player EAST;
+	private Player South;
+	private Player West;
+	private Player North;
+	private Player East;
 
 	public Bridge() {
-		SOUTH = new Player();
-		WEST = new Player();
-		NORTH = new Player();
-		EAST = new Player();
+		South = new Player();
+		West = new Player();
+		North = new Player();
+		East = new Player();
 	}
 }

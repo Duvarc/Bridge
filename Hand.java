@@ -40,11 +40,6 @@ public class Hand {
 
 		hand.get(suit).add(card);
 	}
-
-	public void play(Card card) {
-
-	}
-
 	public void calculatePoints() {
 
 		for (int suit = 0; suit < 4; suit++) {
@@ -86,7 +81,7 @@ public class Hand {
 		return pointsBySuit[3];
 	}
 
-	public int pointsHAND() {
+	public int pointsHand() {
 		return pointsClubs + pointsDiamonds + pointsHearts + pointsHearts;
 	}
 
