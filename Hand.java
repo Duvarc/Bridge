@@ -47,7 +47,7 @@ public class Hand {
 
 	public void calculatePoints() {
 
-		for (int s = 0; s < 4; s++) {
+		for (int suit = 0; suit < 4; suit++) {
 			for (int c = 0; c < hand.get(s).size(); c++) {
 
 				card = hand.get(s).get(c);
