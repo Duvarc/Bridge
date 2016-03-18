@@ -1,4 +1,4 @@
-public class Card {
+public class Card implements Comparable {
 
 	private int suit;
 	private int rank;
@@ -14,5 +14,17 @@ public class Card {
 
 	public int getRank() {
 		return rank;
+	}
+
+	public int compareTo(Card other) {
+		thisValue = suit * 100 + rank;
+		otherValue = other.suit * 100 + other.rank;
+
+		if (thisValue > otherValue) {
+			return 1;
+		}
+		else {
+			return -1
+		}
 	}
 }
