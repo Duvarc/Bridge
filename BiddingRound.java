@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class BiddingRound {
 
 	private ArrayList<Bid> listOfBids;
@@ -13,7 +15,7 @@ public class BiddingRound {
 	public void addBid(Bid bid) {
 
 		listOfBids.add(bid);
-		
+
 		//If bid is a pass
 		if (bid.getRank() == 0) {
 			passCount++;

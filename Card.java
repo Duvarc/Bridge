@@ -3,6 +3,9 @@ public class Card implements Comparable {
 	private int suit;
 	private int rank;
 
+	//See Utils for converting the int representation of an suit to a string.
+	//All ranks from 2-10 are equivalent to their int representation. Jack-Ace is 11-14, respsectively.	
+
 	public Card(int suit, int rank) {
 		this.suit = suit;
 		this.rank = rank;
@@ -16,6 +19,7 @@ public class Card implements Comparable {
 		return rank;
 	}
 
+	//Comparison in the context of bidding - this comparing doesn't work in the context of tricks
 	public int compareTo(Card other) {
 		thisValue = suit * 100 + rank;
 		otherValue = other.suit * 100 + other.rank;
