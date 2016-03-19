@@ -1,4 +1,4 @@
-public class CardTester() {
+public class CardTester {
 
 	public static void main(String[] args) {
 		

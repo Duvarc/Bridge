@@ -11,8 +11,6 @@ public class Hand {
 
 	public ArrayList<ArrayList<Card>> hand;
 
-	private new ArrayList<Card> hand;
-
 	public Hand() {
 
 		Clubs = new ArrayList<Card>(13);
@@ -28,6 +26,39 @@ public class Hand {
 		hand.add(Diamonds);
 		hand.add(Hearts);
 		hand.add(Spades);
+	}
+
+	public ArrayList<Card> getClubs() {
+		return Clubs;
+	}
+
+	public ArrayList<Card> getDiamonds() {
+		return Diamonds;
+	}
+
+	public ArrayList<Card> getHearts() {
+		return Hearts;
+	}
+
+	public ArrayList<Card> getSpades() {
+		return Spades;
+	}
+
+
+	public int numClubs() {
+		return Clubs.size();
+	}
+
+	public int numDiamonds() {
+		return Diamonds.size();
+	}
+
+	public int numHearts() {
+		return Hearts.size();
+	}
+
+	public int numSpades() {
+		return Spades.size();
 	}
 
 	public void add(Card card) {

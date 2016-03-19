@@ -6,6 +6,10 @@ public class Bridge {
 	private Player East;
 
 	public Bridge() {
+		initPlayers();
+	}
+
+	public void initPlayers() {
 		South = new Player();
 		West = new Player();
 		North = new Player();
@@ -20,4 +24,5 @@ public class Bridge {
 		East.right = South;
 		East.left = South;
 	}
+
 }
