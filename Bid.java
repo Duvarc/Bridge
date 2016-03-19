@@ -2,10 +2,12 @@ public class Bid implements Comparable {
 
 	private int suit;
 	private int rank;
+	private int player;
 
-	public Bid(int suit, int rank) {
+	public Bid(Player player, int suit, int rank) {
 		this.suit = suit;
 		this.rank = rank;
+		this.player = player;
 	}
 
 	public int compareTo(Bid other) {
@@ -23,6 +25,10 @@ public class Bid implements Comparable {
 		}
 	}
 
+	public int getPlayer() {
+		return player;
+	}
+	
 	public int getSuit() {
 		return suit;
 	}

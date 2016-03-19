@@ -47,6 +47,9 @@ public class Player {
 		return partner.getHand;
 	}
 
+	public Bid makeBid(Bid bid) {
+		bids.add(bid);
+	}
 
 	public void play(Card card) {
 

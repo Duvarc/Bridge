@@ -11,9 +11,13 @@ public class Bridge {
 		North = new Player();
 		East = new Player();
 
-		South.next = West;
-		West.next = North;
-		North.next = East;
-		East.next = South;
+		South.right = West;
+		South.left = East;
+		West.right = North;
+		West.left = South;
+		North.right = East;
+		North.left = West;
+		East.right = South;
+		East.left = South;
 	}
 }
