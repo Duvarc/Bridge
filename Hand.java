@@ -18,14 +18,26 @@ public class Hand {
 		Hearts = new ArrayList<Card>(13);
 		Spades = new ArrayList<Card>(13);
 
-		pointsBySuit = new int[4];
-
 		hand = new ArrayList<ArrayList<Card>>(4);
 
 		hand.add(Clubs);
 		hand.add(Diamonds);
 		hand.add(Hearts);
 		hand.add(Spades);
+	}
+
+	public Hand(Card[] data) {
+
+		Clubs = new ArrayList<Card>(13);
+		Diamonds = new ArrayList<Card>(13);
+		Hearts = new ArrayList<Card>(13);
+		Spades = new ArrayList<Card>(13);
+
+		hand = new ArrayList<ArrayList<Card>>(4);
+
+		for (int i = 0; i < data.length; i++) {
+			hands.get(data[i].getSuit()).add(data[i]);
+		}
 	}
 
 	public ArrayList<Card> getClubs() {
@@ -68,9 +80,6 @@ public class Hand {
 	}
 
 	public void sort() {
-		//Sort by suit
-
-
-		//Sort by rank
+		for (int i = 0; )
 	}
 }
