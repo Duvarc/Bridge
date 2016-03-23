@@ -5,11 +5,11 @@ public class Utils {
 
 	private static Map<String, Integer> suitToInt = new HashMap<String, Integer>();
 	static {
-		suitToInt.put("Clubs", 0);
-		suitToInt.put("Diamonds", 1);
-		suitToInt.put("Hearts", 2);
-		suitToInt.put("Spades", 3);
-		suitToInt.put("No Trump", 4);
+		suitToInt.put("Spades", 0);
+		suitToInt.put("Hearts", 1);
+		suitToInt.put("Diamonds", 2);
+		suitToInt.put("Clubs", 3);
+		suitToInt.put("No Trump", -1);
 	}
 
 
@@ -35,10 +35,10 @@ public class Utils {
 
 
 	private static final String[] suitSymbol = {
-		"♣", "♦", "♥", "♠", "NT"};
+		"♠", "♥", "♦", "♣", "NT"};
 
 	private static final String[] suitWord = {
-		"Clubs", "Diamonds", "Hearts", "Spades", "No Trump"};
+		"Spades", "Hearts", "Diamonds", "Clubs", "No Trump"};
 
 	private static final String[] rankString = {
 		"Pass", "Ace", "2", "3", "4", "5", "6", "7","8", "9", "10", "Jack", "Queen", "King", "Ace"};

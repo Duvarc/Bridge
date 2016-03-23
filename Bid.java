@@ -25,8 +25,8 @@ public class Bid implements Comparable<Bid> {
 
 
 	public int compareTo(Bid other) {
-		int thisValue = suit * 100 + rank;
-		int otherValue = other.suit * 100 + other.rank;
+		int thisValue = (4 - suit) * 100 + rank;
+		int otherValue = (4 - other.suit) * 100 + other.rank;
 
 		if (thisValue > otherValue) {
 			return 1;

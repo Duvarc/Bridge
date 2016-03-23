@@ -6,26 +6,26 @@ public class Hand implements Iterable<ArrayList<Card>> {
 
 	private int size;
 
-	private ArrayList<Card> Clubs;
-	private ArrayList<Card> Diamonds;
-	private ArrayList<Card> Hearts;
 	private ArrayList<Card> Spades;
+	private ArrayList<Card> Hearts;
+	private ArrayList<Card> Diamonds;
+	private ArrayList<Card> Clubs;
 
 	public ArrayList<ArrayList<Card>> hand;
 
 	public Hand() {
 
-		Clubs = new ArrayList<Card>();
-		Diamonds = new ArrayList<Card>();
-		Hearts = new ArrayList<Card>();
 		Spades = new ArrayList<Card>();
+		Hearts = new ArrayList<Card>();
+		Diamonds = new ArrayList<Card>();
+		Clubs = new ArrayList<Card>();
 
 		hand = new ArrayList<ArrayList<Card>>(4);
 
-		hand.add(Clubs);
-		hand.add(Diamonds);
-		hand.add(Hearts);
 		hand.add(Spades);
+		hand.add(Hearts);
+		hand.add(Diamonds);
+		hand.add(Clubs);
 	}
 
 	/*public Hand(Card[] data) {
@@ -42,38 +42,40 @@ public class Hand implements Iterable<ArrayList<Card>> {
 		}
 	}*/
 
-
-	public ArrayList<Card> getClubs() {
-		return Clubs;
-	}
-
-	public ArrayList<Card> getDiamonds() {
-		return Diamonds;
+	public ArrayList<Card> getSpades() {
+		return Spades;
 	}
 
 	public ArrayList<Card> getHearts() {
 		return Hearts;
 	}
 
-	public ArrayList<Card> getSpades() {
-		return Spades;
+	public ArrayList<Card> getDiamonds() {
+		return Diamonds;
 	}
 
-	public int numClubs() {
-		return Clubs.size();
+	public ArrayList<Card> getClubs() {
+		return Clubs;
 	}
 
-	public int numDiamonds() {
-		return Diamonds.size();
+	public int numSpades() {
+		return Spades.size();
 	}
 
 	public int numHearts() {
 		return Hearts.size();
 	}
 
-	public int numSpades() {
-		return Spades.size();
+	public int numDiamonds() {
+		return Diamonds.size();
 	}
+
+	public int numClubs() {
+		return Clubs.size();
+	}
+
+
+
 
 	public void add(Card card) {
 		hand.get(card.getSuit()).add(card);
@@ -88,7 +90,7 @@ public class Hand implements Iterable<ArrayList<Card>> {
 	public String toString() {
 		String s ="";
 
-		for (int i = 3; i >= 0; i--) {
+		for (int i = 0; i < 4; i++) {
 			s += Utils.getSuitWord(i) + ":";
 			for (int k = 0; k < hand.get(i).size(); k++) {
 				s += " " + Utils.rankToString(hand.get(i).get(k).getRank());

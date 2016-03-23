@@ -44,10 +44,10 @@ public class HandAnalysis {
 	}
 
 	public void calculateDistribution() {
-		sizeDistribution[0] = hand.numClubs();
-		sizeDistribution[1] = hand.numDiamonds();
-		sizeDistribution[2] = hand.numHearts();
-		sizeDistribution[3] = hand.numSpades();
+		sizeDistribution[0] = hand.numSpades();
+		sizeDistribution[1] = hand.numHearts();
+		sizeDistribution[2] = hand.numDiamonds();
+		sizeDistribution[3] = hand.numClubs();
 	}
 
 	public void calculatePoints() {
@@ -103,22 +103,22 @@ public class HandAnalysis {
 			}
 		}
 	}
-
-	public int pointsClubs() {
+	public int pointsSpades() {
 		return pointsBySuit[0];
 	}
 
-	public int pointsDiamonds() {
+	public int pointsHearts() {
 		return pointsBySuit[1];
 	}
 
-	public int pointsHearts() {
+	public int pointsDiamonds() {
 		return pointsBySuit[2];
 	}
 
-	public int pointsSpades() {
+	public int pointsClubs() {
 		return pointsBySuit[3];
 	}
+
 
 	public int pointsHand() {
 		return pointsHand;
