@@ -11,7 +11,7 @@ TO-DO:
 
 Card/Pool
 --------------------------------------------------------------------------------------------------------------
-Design philosophy - should Card extend Pool? A Pool would simply be any set of cards. Reason why the idea came up is that I need a way to represent the combined cards of a player and his/her partner, but simply making the combination a Hand seems kind of disingenous. However, a Hand has 52 spots anyways (4 ArrayLists of size 13 each), so right now Hand seems bloated and a generic structure for holding 52 or less cards.
+Should Card extend Pool? A Pool would simply be any set of cards. Reason why the idea came up is that I need a way to represent the combined cards of a player and his/her partner, but simply making the combination a Hand seems kind of disingenous. However, a Hand has 52 spots anyways (4 ArrayLists of size 13 each), so right now Hand seems bloated and a generic structure for holding 52 or less cards.
 
 Make hand leaner and more efficient?
 
