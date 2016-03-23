@@ -1,6 +1,6 @@
 public class BridgeTester {
 
-	public BridgeTester() {
+	public static void main(String[] args) {
 		
 	}
 }

@@ -7,8 +7,26 @@ public class Card implements Comparable<Card> {
 	//All ranks from 2-10 are equivalent to their int representation. Jack-Ace is 11-14, respsectively.	
 
 	public Card(int suit, int rank) {
+		if (rank == 1) {
+			rank = 14;
+		}
+
 		this.suit = suit;
 		this.rank = rank;
+	}
+
+	public Card(String suit, int rank) {
+		if (rank == 1) {
+			rank = 14;
+		}
+		
+		this.suit = Utils.suitToInt(suit);
+		this.rank = rank;
+	}
+
+	public Card(String suit, String rank) {
+		this.suit = Utils.suitToInt(suit);
+		this.rank = Utils.rankToInt(rank);
 	}
 
 	public int getSuit() {
@@ -36,6 +54,6 @@ public class Card implements Comparable<Card> {
 	}
 
 	public String toString() {
-		return rank + " of " + Utils.getSuitString(getSuit());
+		return rank + " of " + Utils.getSuitWord(getSuit());
 	}
 }

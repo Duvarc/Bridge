@@ -85,6 +85,18 @@ public class Hand implements Iterable<ArrayList<Card>> {
 		}
 	}
 	
+	public String toString() {
+		String s ="";
+
+		for (int i = 0; i < 4; i++) {
+			s += Utils.getSuitWord(i) + ":";
+			for (int k = 0; k < hand.get(i).size(); k++) {
+				s += " " + Utils.rankToString(hand.get(i).get(k).getRank());
+			}
+			s+= "\n";
+		}
+		return s;
+	}
 	private class SuitIterator implements Iterator<ArrayList<Card>> {
 		private int index;
 
