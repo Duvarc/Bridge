@@ -12,6 +12,10 @@ public class Trick {
 		trick = new ArrayList<Play>(4);
 	}
 
+	public void add(Play play) {
+		trick.add(play);
+	}
+
 	public Player getWinner() {
 		int maxValue = 0;
 		int playValue = 0;

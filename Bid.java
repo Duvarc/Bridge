@@ -10,6 +10,20 @@ public class Bid implements Comparable<Bid> {
 		this.player = player;
 	}
 
+	public Bid(Player player, String suit, int rank) {
+		this.suit = Utils.suitToInt(suit);
+		this.rank = rank;
+		this.player = player;
+	}
+
+	public Bid(Player player, String suit, String rank) {
+		this.suit = Utils.suitToInt(suit);
+		this.rank = Utils.rankToInt(rank);
+		this.player = player;
+	}
+
+
+
 	public int compareTo(Bid other) {
 		int thisValue = suit * 100 + rank;
 		int otherValue = other.suit * 100 + other.rank;
