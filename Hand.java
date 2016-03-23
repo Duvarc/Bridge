@@ -84,11 +84,11 @@ public class Hand implements Iterable<ArrayList<Card>> {
 			Collections.sort(hand.get(i), Collections.reverseOrder());
 		}
 	}
-	
+
 	public String toString() {
 		String s ="";
 
-		for (int i = 0; i < 4; i++) {
+		for (int i = 3; i >= 0; i--) {
 			s += Utils.getSuitWord(i) + ":";
 			for (int k = 0; k < hand.get(i).size(); k++) {
 				s += " " + Utils.rankToString(hand.get(i).get(k).getRank());
@@ -101,7 +101,7 @@ public class Hand implements Iterable<ArrayList<Card>> {
 		private int index;
 
 		public SuitIterator() {
-			index = -1;
+			index = 0;
 		}
 
 		public boolean hasNext() {
@@ -110,7 +110,7 @@ public class Hand implements Iterable<ArrayList<Card>> {
 
 		public ArrayList<Card> next() {
 			index++;
-			return hand.get(index);
+			return hand.get(index - 1);
 		}
 	}
 

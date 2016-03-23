@@ -80,23 +80,28 @@ public class HandAnalysis {
 		int suitIndex = 0;
 		for (ArrayList<Card> suit : hand) {
 			for (Card x : suit) {
-
 				int rank = x.getRank();
-				//If card is an ace
-				if (rank == 1) {
-					pointsBySuit[suitIndex] += 4;
-				}
-				//Else if card is a King, Queen, or Jack
-				else if (rank >= 11) {
+
+				//High card points
+				if (rank >= 11) {
 					pointsBySuit[suitIndex] += rank - 10;
 				}
 			}
+
 			int numInSuit = suit.size();
 			pointsBySuit[suitIndex] += Math.max(0, numInSuit - 4);
 			suitIndex++;
 		}
 
 		pointsHand = pointsClubs() + pointsDiamonds() + pointsHearts() + pointsSpades();
+	}
+
+	public void testIterator() {
+		for (ArrayList<Card> suit : hand) {
+			for (Card x : suit) {
+				System.out.println(x);
+			}
+		}
 	}
 
 	public int pointsClubs() {
@@ -117,5 +122,17 @@ public class HandAnalysis {
 
 	public int pointsHand() {
 		return pointsHand;
+	}
+
+	public void printAnalysis() {
+		System.out.println("Analysis");
+		System.out.println();
+		System.out.println("Spades: " + pointsSpades() + " points");
+		System.out.println("Hearts: " + pointsHearts() + " points");
+		System.out.println("Diamonds: " + pointsDiamonds() + " points");
+		System.out.println("Clubs: " + pointsClubs() + " points");
+		System.out.println("Points total: " + pointsHand + " points");
+		System.out.println("Balanced?: " + balanced());
+
 	}
 }

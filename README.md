@@ -10,7 +10,7 @@ TO-DO:
 
 3/23/16
 
-Created HashMaps in Utils.java that map String representation of suits (ie. "King") to int values (ie. 13). Decided that although 1, "1", "Ace" are all the same thing, they have one numerical value - 14, not 1. This makes comparing cards and plays much easier. Adjusted handData.java to make balanced hands ints instead of arrays, (ie. 4333 instead of [4, 3, 3, 3]). Fixed a bunch of compilation errors.
+Created HashMaps in Utils.java that map String representation of suits (ie. "King") to int values (ie. 13). Decided that although 1, "1", "Ace" are all the same thing, they have one numerical value - 14, not 1. This makes comparing cards and plays much easier. Adjusted handData.java to make balanced hands ints instead of arrays, (ie. 4333 instead of [4, 3, 3, 3]). Fixed a bunch of compilation errors. Tested HandAnalysis.
 
 
 
