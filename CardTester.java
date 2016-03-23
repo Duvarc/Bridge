@@ -11,7 +11,7 @@ public class CardTester {
 		sample.add(new Card("Hearts", 2));
 		sample.add(new Card("Hearts", "Ace"));
 		sample.add(new Card("Clubs", "King"));
-		sample.add(new Card("Clubs", 9));
+		sample.add(new Card("Clubs", 8));
 		sample.add(new Card("Clubs", 3));
 
 		System.out.println(sample);
