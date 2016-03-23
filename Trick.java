@@ -4,6 +4,7 @@ public class Trick {
 	
 	private Bid contract;
 	private int firstSuit;
+	private Player winner = null;
 
 	private ArrayList<Play> trick;
 
@@ -19,7 +20,6 @@ public class Trick {
 	public Player getWinner() {
 		int maxValue = 0;
 		int playValue = 0;
-		Player winner = null;
 
 		firstSuit = trick.get(0).getCard().getSuit();
 

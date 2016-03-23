@@ -9,6 +9,7 @@ public class Utils {
 		suitToInt.put("Diamonds", 1);
 		suitToInt.put("Hearts", 2);
 		suitToInt.put("Spades", 3);
+		suitToInt.put("No Trump", 4);
 	}
 
 

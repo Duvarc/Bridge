@@ -2,10 +2,17 @@
 
 TO-DO:
 
-- 
+- Add JUnit tests
 - Implement basic strategy for bidding
 - Implement basic strategy for playing
 - Read and Write bridge game data
+
+
+3/23/16
+
+Created HashMaps in Utils.java that map String representation of suits (ie. "King") to int values (ie. 13). Decided that although 1, "1", "Ace" are all the same thing, they have one numerical value - 14, not 1. This makes comparing cards and plays much easier. Adjusted handData.java to make balanced hands ints instead of arrays, (ie. 4333 instead of [4, 3, 3, 3]). Fixed a bunch of compilation errors.
+
+
 
 3/18/16
 
@@ -32,4 +39,5 @@ Hierarchy of a game:
 
 
 3/17/16
+
 Calculating the point value of each card as it is being adding to the hand would be more efficient. However, there are multiple ways of calculating the point value of a hand and it makes more sense to calculate a hand using a particular method after all the cards are dealt.
