@@ -7,7 +7,7 @@ public class BiddingRound {
 	private Bid winningBid;
 
 	public BiddingRound() {
-		listOfBids = new ArrayList<Bid>(30);
+		listOfBids = new ArrayList<Bid>(10);
 		passCount = 0;
 		winningBid = null;
 	}

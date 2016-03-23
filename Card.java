@@ -1,4 +1,4 @@
-public class Card implements Comparable {
+public class Card implements Comparable<Card> {
 
 	private int suit;
 	private int rank;
@@ -19,15 +19,15 @@ public class Card implements Comparable {
 		return rank;
 	}
 
-	//Comparison in the context of bidding - this comparing doesn't work in the context of tricks
+	//Compare numerical value only
 	public int compareTo(Card other) {
-		thisValue = suit * 100 + rank;
-		otherValue = other.suit * 100 + other.rank;
+		int thisValue = this.rank;
+		int otherValue = other.rank;
 
 		if (thisValue > otherValue) {
 			return 1;
 		}
-		else if (otherValue > thisValue) {
+		else if (thisValue < otherValue) {
 			return -1;
 		}
 		else {
@@ -36,6 +36,6 @@ public class Card implements Comparable {
 	}
 
 	public String toString() {
-		return rank + " of " + Utils.getSuitString(card.suit);
+		return rank + " of " + Utils.getSuitString(getSuit());
 	}
 }

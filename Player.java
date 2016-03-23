@@ -15,14 +15,14 @@ public class Player {
 	public Player(String name) {
 		this.name = name;
 		tricksWon = new ArrayList<Trick>(13);
-		bids = new ArrayList<Trick>(30);
+		bids = new ArrayList<Bid>(30);
 	}
 
 	public Player(String name, Hand hand) {
 		this.name = name;
 		this.hand = hand;
 		tricksWon = new ArrayList<Trick>(13);
-		bids = new ArrayList<Trick>(30);
+		bids = new ArrayList<Bid>(30);
 	}
 
 	public void setRight(Player right) {
@@ -45,12 +45,13 @@ public class Player {
 		return hand;
 	}
 
-	public Hand getPartnersHand() {
-		return partner.getHand;
-	}
+	/*public Hand getPartnersHand() {
+		return partner.getHand();
+	}*/
 
 	public Bid makeBid(Bid bid) {
 		bids.add(bid);
+		return bid;
 	}
 
 	public void play(Card card) {

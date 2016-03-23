@@ -1,10 +1,16 @@
-import HandData.java;
+import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class HandAnalysis {
 
 	private int pointsHand;
+	private int pointDistribution;
+
 	private Hand hand;
+
 	private int[] sizeDistribution;
+	private int[] sortedDistribution;
 	private int[] pointsBySuit;
 
 	public HandAnalysis(Hand hand) {
@@ -12,22 +18,26 @@ public class HandAnalysis {
 		sizeDistribution = new int[4];
 		pointsBySuit = new int[4];
 
-		calculateDistribution(hand);
-		calculatePoints(hand);
+		calculateDistribution();
+		calculatePoints();
+		sortedDistribution = Arrays.copyOf(sizeDistribution, 4);
+		Arrays.sort(sortedDistribution);
+		pointDistribution = sortedDistribution[0] + 
+							10 * sortedDistribution[1] +
+							100 * sortedDistribution[2] +
+							1000 * sortedDistribution[3];
 	}
 
 	public boolean balanced() {
 
-		int[] sortedDistribution = Arrays.copyOf(sizeDistribution, 4);
-		Array.sort(sortedDistribution, Collections.reverseOrder());
 
-		if (sortedDistrubtion == HandData.balanced4333) {
+		if (pointDistribution == HandData.balanced4333) {
 			return true;
 		}
-		else if (sortedDistrubtion == HandData.balanced4432) {
+		else if (pointDistribution== HandData.balanced4432) {
 			return true;
 		}
-		else if (sortedDistrubtion == HandData.balanced5332) {
+		else if (pointDistribution == HandData.balanced5332) {
 			return true;
 		}
 		return false;
@@ -40,9 +50,9 @@ public class HandAnalysis {
 		sizeDistribution[3] = hand.numSpades();
 	}
 
-	public void calculatePoints(Hand hand) {
+	public void calculatePoints() {
 
-		for (int suit = 0; suit < 4; suit++) {
+		/*for (int s = 0; s < 4; s++) {
 			for (int c = 0; c < hand.get(s).size(); c++) {
 
 				card = hand.get(s).get(c);
@@ -52,19 +62,41 @@ public class HandAnalysis {
 
 				//If card is an ace
 				if (rank == 1) {
-					pointsBySuit[suit] += 4;
+					pointsBySuit[s] += 4;
 				}
 				//Else if card is a King, Queen, or Jack
 				else if (rank >= 11) {
-					pointsBySuit[suit] += rank - 10;
+					pointsBySuit[s] += rank - 10;
 				}
 			}
 
 			//Long suit points - add 1 point for each card over 4 cards
-			pointsBySuit[suit] += Math.max(0, cardsInSuit - 4);
+			int numInSuit = hand.get(s).size();
+			pointsBySuit[s] += Math.max(0, numInSuit - 4);
 		}
 
-		pointsHand = pointsClubs() + pointsDiamonds() + pointsHearts(); + pointsSpades();
+		pointsHand = pointsClubs() + pointsDiamonds() + pointsHearts() + pointsSpades();*/
+
+		int suitIndex = 0;
+		for (ArrayList<Card> suit : hand) {
+			for (Card x : suit) {
+
+				int rank = x.getRank();
+				//If card is an ace
+				if (rank == 1) {
+					pointsBySuit[suitIndex] += 4;
+				}
+				//Else if card is a King, Queen, or Jack
+				else if (rank >= 11) {
+					pointsBySuit[suitIndex] += rank - 10;
+				}
+			}
+			int numInSuit = suit.size();
+			pointsBySuit[suitIndex] += Math.max(0, numInSuit - 4);
+			suitIndex++;
+		}
+
+		pointsHand = pointsClubs() + pointsDiamonds() + pointsHearts() + pointsSpades();
 	}
 
 	public int pointsClubs() {

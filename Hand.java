@@ -1,6 +1,8 @@
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
 
-public class Hand {
+public class Hand implements Iterable<ArrayList<Card>> {
 
 	private int size;
 
@@ -13,10 +15,10 @@ public class Hand {
 
 	public Hand() {
 
-		Clubs = new ArrayList<Card>(13);
-		Diamonds = new ArrayList<Card>(13);
-		Hearts = new ArrayList<Card>(13);
-		Spades = new ArrayList<Card>(13);
+		Clubs = new ArrayList<Card>();
+		Diamonds = new ArrayList<Card>();
+		Hearts = new ArrayList<Card>();
+		Spades = new ArrayList<Card>();
 
 		hand = new ArrayList<ArrayList<Card>>(4);
 
@@ -26,19 +28,20 @@ public class Hand {
 		hand.add(Spades);
 	}
 
-	public Hand(Card[] data) {
+	/*public Hand(Card[] data) {
 
-		Clubs = new ArrayList<Card>(13);
-		Diamonds = new ArrayList<Card>(13);
-		Hearts = new ArrayList<Card>(13);
-		Spades = new ArrayList<Card>(13);
+		Clubs = new ArrayList<Card>();
+		Diamonds = new ArrayList<Card>();
+		Hearts = new ArrayList<Card>();
+		Spades = new ArrayList<Card>();
 
 		hand = new ArrayList<ArrayList<Card>>(4);
 
 		for (int i = 0; i < data.length; i++) {
 			hands.get(data[i].getSuit()).add(data[i]);
 		}
-	}
+	}*/
+
 
 	public ArrayList<Card> getClubs() {
 		return Clubs;
@@ -55,7 +58,6 @@ public class Hand {
 	public ArrayList<Card> getSpades() {
 		return Spades;
 	}
-
 
 	public int numClubs() {
 		return Clubs.size();
@@ -74,12 +76,34 @@ public class Hand {
 	}
 
 	public void add(Card card) {
-		suit = card.suit;
-
-		hand.get(suit).add(card);
+		hand.get(card.getSuit()).add(card);
 	}
 
 	public void sort() {
-		for (int i = 0; )
+		for (int i = 0; i < 4; i++) {
+			Collections.sort(hand.get(i), Collections.reverseOrder());
+		}
 	}
+	
+	private class SuitIterator implements Iterator<ArrayList<Card>> {
+		private int index;
+
+		public SuitIterator() {
+			index = -1;
+		}
+
+		public boolean hasNext() {
+			return (index < 4);
+		}
+
+		public ArrayList<Card> next() {
+			index++;
+			return hand.get(index);
+		}
+	}
+
+	public Iterator<ArrayList<Card>> iterator() {
+		return new SuitIterator();
+	}
+
 }

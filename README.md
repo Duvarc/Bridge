@@ -20,6 +20,8 @@ Whatever the case, there does not seem to be a need for a separate Deck object -
 Game
 --------------------------------------------------------------------------------------------------------------
 Hierarchy of a game:
+- Players join game
+- Hands are dealt
 - Bidding Round
 - Playing round
 	- Trick 1

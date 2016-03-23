@@ -1,4 +1,6 @@
-public class Trick implements Comparator<Play> {
+import java.util.ArrayList;
+
+public class Trick {
 	
 	private Bid contract;
 	private int firstSuit;
@@ -11,15 +13,16 @@ public class Trick implements Comparator<Play> {
 	}
 
 	public Player getWinner() {
-		int maxValue;
-		Player winner;
+		int maxValue = 0;
+		int playValue = 0;
+		Player winner = null;
 
 		firstSuit = trick.get(0).getCard().getSuit();
 
 		for (int i = 0; i < 4; i++) {
 
 			Card currentCard = trick.get(i).getCard();
-			int playValue = trick.get(i).getCard().getRank();
+			playValue = trick.get(i).getCard().getRank();
 
 			//Trump suit bonus
 			if (currentCard.getSuit() == contract.getSuit()) {
@@ -35,6 +38,8 @@ public class Trick implements Comparator<Play> {
 				winner = trick.get(i).getPlayer();
 			}
 		}
+
+		return winner;
 	}
 
 	public int compare(Play play1, Play play2) {
@@ -42,19 +47,19 @@ public class Trick implements Comparator<Play> {
 		int playValue2 = play2.getCard().getRank();
 
 		//Trump suit bonus
-		if (play1.getSuit() == contract.getSuit()) {
+		if (play1.getCard().getSuit() == contract.getSuit()) {
 			playValue1 += 200;
 		}
 		//Original suit bonus
-		else if (currentCard.getSuit() == firstSuit) {
+		else if (play1.getCard().getSuit() == firstSuit) {
 			playValue1 += 100;
 		}
 
 
-		if (play2.getSuit() == contract.getSuit()) {
+		if (play2.getCard().getSuit() == contract.getSuit()) {
 			playValue2 += 200;
 		}
-		else if (play2.getSuit() == firstSuit) {
+		else if (play2.getCard().getSuit() == firstSuit) {
 			playValue2 += 100;
 		}
 

@@ -1,8 +1,8 @@
-public class Bid implements Comparable {
+public class Bid implements Comparable<Bid> {
 
 	private int suit;
 	private int rank;
-	private int player;
+	private Player player;
 
 	public Bid(Player player, int suit, int rank) {
 		this.suit = suit;
@@ -11,8 +11,8 @@ public class Bid implements Comparable {
 	}
 
 	public int compareTo(Bid other) {
-		thisValue = suit * 100 + rank;
-		otherValue = other.suit * 100 + other.rank;
+		int thisValue = suit * 100 + rank;
+		int otherValue = other.suit * 100 + other.rank;
 
 		if (thisValue > otherValue) {
 			return 1;
@@ -25,7 +25,7 @@ public class Bid implements Comparable {
 		}
 	}
 
-	public int getPlayer() {
+	public Player getPlayer() {
 		return player;
 	}
 	
