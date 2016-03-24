@@ -34,5 +34,12 @@ public class CardTester {
 		System.out.println(sampleAnalysis.highCardPoints());
 
 		System.out.println(sampleAnalysis.openingBid());
+
+		Bid one = new Bid("No Trump", 1);
+		Bid two = new Bid("Spades", 3);
+		Bid three = new Bid("Hearts", 3);
+		Bid four = new Bid("No Trump", 3);
+
+		System.out.println(two.max(four));
 	}
 }

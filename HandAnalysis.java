@@ -156,7 +156,10 @@ public class HandAnalysis {
 
 	public Bid openingBid() {
 		if (balanced()) {
-			if (highCardPoints >= 15 && highCardPoints <= 17) {
+			if (highCardPoints >= 12 && highCardPoints <= 14) {
+				return new Bid(hand.getOwner(), " ", 1);
+			}
+			else if (highCardPoints >= 15 && highCardPoints <= 17) {
 				return new Bid(hand.getOwner(), "No Trump", 1);
 			}
 		}

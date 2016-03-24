@@ -56,18 +56,18 @@ public class Bid implements Comparable<Bid> {
 		int otherValue;
 
 		if (suit == 5) {
-			thisValue = 500 + rank;
+			thisValue = 5 + 100 * rank;
 		}
 		else {
-			thisValue = (4 - suit) * 100 + rank;
+			thisValue = (4 - suit) + 100 * rank;
 		}
 
 
 		if (other.getSuit() == 5) {
-			otherValue = 500 + other.getRank();
+			otherValue = 5 + 100 * other.getRank();
 		}
 		else {
-			otherValue = (4 - other.suit) * 100 + other.rank;
+			otherValue = (4 - other.suit) + 100 * other.rank;
 		}
 
 
@@ -79,6 +79,19 @@ public class Bid implements Comparable<Bid> {
 		}
 		else {
 			return 0;
+		}
+	}
+
+	public Bid max(Bid other) {
+		int compareValue = compareTo(other);
+		if (compareValue == 1) {
+			return this;
+		}
+		else if (compareValue == -1) {
+			return other;
+		}
+		else {
+			return this;
 		}
 	}
 
