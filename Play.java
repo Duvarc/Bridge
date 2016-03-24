@@ -1,6 +1,5 @@
 public class Play {
 
-
 	private Player player;
 	private Card card;
 
