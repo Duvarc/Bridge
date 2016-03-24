@@ -5,6 +5,9 @@ import java.util.Collections;
 public class HandAnalysis {
 
 	private int pointsHand;
+
+	private int highCardPoints;
+
 	private int pointDistribution;
 
 	private Hand hand;
@@ -17,6 +20,7 @@ public class HandAnalysis {
 		this.hand = hand;
 		sizeDistribution = new int[4];
 		pointsBySuit = new int[4];
+		highCardPoints = 0;
 
 		calculateDistribution();
 		calculatePoints();
@@ -85,6 +89,7 @@ public class HandAnalysis {
 				//High card points
 				if (rank >= 11) {
 					pointsBySuit[suitIndex] += rank - 10;
+					highCardPoints += rank - 10;
 				}
 			}
 
@@ -119,6 +124,9 @@ public class HandAnalysis {
 		return pointsBySuit[3];
 	}
 
+	public int highCardPoints() {
+		return highCardPoints;
+	}
 
 	public int pointsHand() {
 		return pointsHand;
@@ -133,6 +141,25 @@ public class HandAnalysis {
 		System.out.println("Clubs: " + pointsClubs() + " points");
 		System.out.println("Points total: " + pointsHand + " points");
 		System.out.println("Balanced?: " + balanced());
+	}
 
+	public void printAnalysis2() {
+		System.out.println("Analysis");
+		System.out.println();
+		System.out.println("♠ " + pointsSpades() + " points");
+		System.out.println("♥ " + pointsHearts() + " points");
+		System.out.println("♦ " + pointsDiamonds() + " points");
+		System.out.println("♣ " + pointsClubs() + " points");
+		System.out.println("Points total: " + pointsHand + " points");
+		System.out.println("Balanced?: " + balanced());
+	}
+
+	public Bid openingBid() {
+		if (balanced()) {
+			if (highCardPoints >= 15 && highCardPoints <= 17) {
+				return new Bid(hand.getOwner(), "No Trump", 1);
+			}
+		}
+		return new Bid(hand.getOwner(), "Pass");
 	}
 }

@@ -26,8 +26,13 @@ public class CardTester {
 		System.out.println(sample);
 
 		System.out.println("-----------------");
+		sample.printHand();
 
 		HandAnalysis sampleAnalysis = new HandAnalysis(sample);
-		sampleAnalysis.printAnalysis();
+		sampleAnalysis.printAnalysis2();
+
+		System.out.println(sampleAnalysis.highCardPoints());
+
+		System.out.println(sampleAnalysis.openingBid());
 	}
 }

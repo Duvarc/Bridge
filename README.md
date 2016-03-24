@@ -7,6 +7,8 @@ TO-DO:
 - Implement basic strategy for playing
 - Read and Write bridge game data
 
+3/24/16
+Adding rudimentary rules for opening bid 1 NT. Created a two-way linking between players and hands.
 
 3/23/16
 

@@ -9,7 +9,8 @@ public class Utils {
 		suitToInt.put("Hearts", 1);
 		suitToInt.put("Diamonds", 2);
 		suitToInt.put("Clubs", 3);
-		suitToInt.put("No Trump", -1);
+		suitToInt.put("Pass", 4);
+		suitToInt.put("No Trump", 5);
 	}
 
 
@@ -30,26 +31,35 @@ public class Utils {
 		rankToInt.put("Queen", 12);
 		rankToInt.put("King", 13);
 		rankToInt.put("Ace", 14);
+		rankToInt.put("Pass", 0);
 	}
 
 
 
-	private static final String[] suitSymbol = {
-		"♠", "♥", "♦", "♣", "NT"};
+	private static final String[] suitToSymbol = {
+		"♠", "♥", "♦", "♣", "Pass", "NT"};
 
-	private static final String[] suitWord = {
-		"Spades", "Hearts", "Diamonds", "Clubs", "No Trump"};
+	private static final String[] suitToString = {
+		"Spades", "Hearts", "Diamonds", "Clubs", "Pass", "No Trump"};
 
-	private static final String[] rankString = {
+	private static final String[] rankToString = {
 		"Pass", "Ace", "2", "3", "4", "5", "6", "7","8", "9", "10", "Jack", "Queen", "King", "Ace"};
 
 
 	public static String getSuitWord(int suit) {
-		return suitWord[suit];
+		return suitToString[suit];
+	}
+
+	public static String suitToString(int suit) {
+		return suitToString[suit];
 	}
 
 	public static int suitToInt(String s) {
 		return suitToInt.get(s);
+	}
+
+	public static String suitToSymbol(int rank) {
+		return suitToSymbol[rank];
 	}
 
 	public static int rankToInt(String s) {
@@ -57,7 +67,8 @@ public class Utils {
 	}
 
 	public static String rankToString(int rank) {
-		return rankString[rank];
+		return rankToString[rank];
 	}
+
 
 }

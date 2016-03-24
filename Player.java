@@ -37,7 +37,12 @@ public class Player {
 		this.partner = partner;
 	}
 
-	public void setHand(Hand hand) {
+	public void setHand(Hand givenHand) {
+		hand = givenHand;
+		hand.setHandHelper(this);
+	}
+
+	public void setOwnerHelper(Hand hand) {
 		this.hand = hand;
 	}
 

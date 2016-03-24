@@ -13,7 +13,25 @@ public class Hand implements Iterable<ArrayList<Card>> {
 
 	public ArrayList<ArrayList<Card>> hand;
 
+	Player owner = null;
+
 	public Hand() {
+
+		Spades = new ArrayList<Card>();
+		Hearts = new ArrayList<Card>();
+		Diamonds = new ArrayList<Card>();
+		Clubs = new ArrayList<Card>();
+
+		hand = new ArrayList<ArrayList<Card>>(4);
+
+		hand.add(Spades);
+		hand.add(Hearts);
+		hand.add(Diamonds);
+		hand.add(Clubs);
+	}
+
+	public Hand(Player player) {
+		owner = player;
 
 		Spades = new ArrayList<Card>();
 		Hearts = new ArrayList<Card>();
@@ -74,9 +92,6 @@ public class Hand implements Iterable<ArrayList<Card>> {
 		return Clubs.size();
 	}
 
-
-
-
 	public void add(Card card) {
 		hand.get(card.getSuit()).add(card);
 	}
@@ -85,6 +100,19 @@ public class Hand implements Iterable<ArrayList<Card>> {
 		for (int i = 0; i < 4; i++) {
 			Collections.sort(hand.get(i), Collections.reverseOrder());
 		}
+	}
+
+	public Player getOwner() {
+		return owner;
+	}
+
+	public void setOwner(Player player) {
+		owner = player;
+		player.setOwnerHelper(this);
+	}
+
+	public void setHandHelper(Player player) {
+		owner = player;
 	}
 
 	public String toString() {
@@ -98,6 +126,16 @@ public class Hand implements Iterable<ArrayList<Card>> {
 			s+= "\n";
 		}
 		return s;
+	}
+
+	public void printHand() {
+		for (int i = 0; i < 4; i++) {
+			System.out.print(Utils.suitToSymbol(i));
+			for (int k = 0; k < hand.get(i).size(); k++) {
+				System.out.print(" " + Utils.rankToString(hand.get(i).get(k).getRank()));
+			}
+			System.out.println();
+		}
 	}
 	private class SuitIterator implements Iterator<ArrayList<Card>> {
 		private int index;
