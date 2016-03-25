@@ -25,12 +25,20 @@ public class Player {
 		bids = new ArrayList<Bid>(30);
 	}
 
+	public void setLeft(Player left) {
+		this.left = left;
+	}
+
 	public void setRight(Player right) {
 		this.right = right;
 	}
 
-	public void setLeft(Player left) {
-		this.left = left;
+	public Player getLeft() {
+		return left;
+	}
+
+	public Player getRight() {
+		return right;
 	}
 
 	public void setPartner(Player partener) {
@@ -61,6 +69,14 @@ public class Player {
 
 	public void play(Card card) {
 
+	}
+
+	public void addTrickWon(Trick t) {
+		tricksWon.add(t);
+	}
+
+	public ArrayList<Trick> getTricksWon() {
+		return tricksWon;
 	}
 
 	public String toString() {

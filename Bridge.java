@@ -1,11 +1,15 @@
 public class Bridge {
 
-	private Player South;
-	private Player West;
-	private Player North;
-	private Player East;
+	private Player south;
+	private Player west;
+	private Player north;
+	private Player east;
 
 	public Bridge() {
+		
+	}
+
+	public void startGame() {
 		
 	}
 

@@ -4,48 +4,47 @@ public class Bid implements Comparable<Bid> {
 	private int rank;
 	private Player player;
 
+	public Bid(Player player, Bid bid) {
+		this(bid.getSuit(), bid.getRank());
+		this.player = player;
+	}
+
 	public Bid(String suit) {
 		this.suit = 5;
 		this.rank = 0;
 	}
+
 	public Bid(int suit, int rank) {
 		this.suit = suit;
 		this.rank = rank;
 	}
 
 	public Bid(String suit, int rank) {
-		this.suit = Utils.suitToInt(suit);
-		this.rank = rank;
+		this(Utils.suitToInt(suit), rank);
 	}
 
 	public Bid(String suit, String rank) {
-		this.suit = Utils.suitToInt(suit);
-		this.rank = Utils.rankToInt(rank);
+		this(Utils.suitToInt(suit), Utils.rankToInt(rank));
 	}
 
-
-
-
 	public Bid(Player player, String suit) {
-		this.suit = 5;
-		this.rank = 0;
+		this(suit);
 		this.player = player;
 	}
 	public Bid(Player player, int suit, int rank) {
-		this.suit = suit;
-		this.rank = rank;
+		this(suit, rank);
 		this.player = player;
 	}
 
 	public Bid(Player player, String suit, int rank) {
-		this.suit = Utils.suitToInt(suit);
-		this.rank = rank;
+		this(suit, rank);
 		this.player = player;
 	}
 
 	public Bid(Player player, String suit, String rank) {
-		this.suit = Utils.suitToInt(suit);
-		this.rank = Utils.rankToInt(rank);
+		/*this.suit = Utils.suitToInt(suit);
+		this.rank = Utils.rankToInt(rank);*/
+		this(suit, rank);
 		this.player = player;
 	}
 
