@@ -44,6 +44,8 @@ public class Hand implements Iterable<ArrayList<Card>> {
 		hand.add(Hearts);
 		hand.add(Diamonds);
 		hand.add(Clubs);
+
+		player.setOwnerHelper(this);
 	}
 
 	/*public Hand(Card[] data) {
@@ -121,7 +123,7 @@ public class Hand implements Iterable<ArrayList<Card>> {
 		for (int i = 0; i < 4; i++) {
 			s += Utils.getSuitWord(i) + ":";
 			for (int k = 0; k < hand.get(i).size(); k++) {
-				s += " " + Utils.rankToString(hand.get(i).get(k).getRank());
+				s += " " + Utils.rankToStringSimple(hand.get(i).get(k).getRank());
 			}
 			s+= "\n";
 		}
@@ -132,7 +134,7 @@ public class Hand implements Iterable<ArrayList<Card>> {
 		for (int i = 0; i < 4; i++) {
 			System.out.print(Utils.suitToSymbol(i));
 			for (int k = 0; k < hand.get(i).size(); k++) {
-				System.out.print(" " + Utils.rankToString(hand.get(i).get(k).getRank()));
+				System.out.print(" " + Utils.rankToStringSimple(hand.get(i).get(k).getRank()));
 			}
 			System.out.println();
 		}

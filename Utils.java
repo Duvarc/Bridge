@@ -43,8 +43,21 @@ public class Utils {
 		"Spades", "Hearts", "Diamonds", "Clubs", "Pass", "No Trump"};
 
 	private static final String[] rankToString = {
-		"Pass", "Ace", "2", "3", "4", "5", "6", "7","8", "9", "10", "Jack", "Queen", "King", "Ace"};
+		"Pass", "Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"};
 
+	private static final String[] rankToStringSimple = {
+		"Pass", "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"};
+
+	private static final String[] rankToStringBid = {
+		"Pass", "1", "2", "3", "4", "5", "6"};
+
+	public static String rankToStringBid(int rank) {
+		return rankToStringBid[rank];
+	}
+
+	public static String rankToStringSimple(int rank) {
+		return rankToStringSimple[rank];
+	}
 
 	public static String getSuitWord(int suit) {
 		return suitToString[suit];

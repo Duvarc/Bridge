@@ -31,8 +31,34 @@ public class BridgeTester {
 		System.out.println(test.getWinner());
 	}
 
+	public static void testThree() {
+		/*Deck deck = new Deck();
+		deck.shuffle();
+		deck.printContents();*/
+		Player South = new Player("South");
+		Player West = new Player("West");
+		Player North = new Player("North");
+		Player East = new Player("East");
+
+		Game one = new Game(South, West, North, East);
+		System.out.println("Hand");
+		System.out.println();
+		System.out.println(West.getHand());
+
+		System.out.println("-------------");
+		System.out.println();
+		HandAnalysis analysis = new HandAnalysis(West.getHand());
+		analysis.printAnalysis2();
+		System.out.println();
+		System.out.println("-------------");
+		System.out.println("Open with:");
+		System.out.println(analysis.openingBid());
+		System.out.println();
+	}
+
 	public static void main(String[] args) {
-		testOne();
-		testTwo();
+		//testOne();
+		//testTwo();
+		testThree();
 	}
 }

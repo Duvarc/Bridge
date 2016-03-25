@@ -15,7 +15,17 @@ public class Deck {
 		}
 	}
 
-	private void shuffle() {
+	public void shuffle() {
 		Collections.shuffle(deck);
+	}
+
+	public Card get(int index) {
+		return deck.get(index);
+	}
+
+	public void printContents() {
+		for (Card x : deck) {
+			System.out.println(x);
+		}
 	}
 }

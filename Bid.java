@@ -112,7 +112,7 @@ public class Bid implements Comparable<Bid> {
 			return "Pass";
 		}
 		else {
-			return Utils.rankToString(rank) + " " + Utils.suitToString(suit);
+			return Utils.rankToStringBid(rank) + " " + Utils.suitToSymbol(suit);
 		}
 	}
 }
