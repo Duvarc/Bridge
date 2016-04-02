@@ -108,7 +108,7 @@ public class Game {
 	}
 
 	public void startPlaying() {
-		Player currentPlayer = south;
+		Player currentPlayer = contract.getPlayer().getLeft();
 		for (int i = 0; i <= 12; i++) {
 
 			Trick t = new Trick(contract);

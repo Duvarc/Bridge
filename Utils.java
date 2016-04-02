@@ -3,6 +3,8 @@ import java.util.Map;
 
 public class Utils {
 
+	//toString utilies
+
 	private static Map<String, Integer> suitToInt = new HashMap<String, Integer>();
 	static {
 		suitToInt.put("Spades", 0);
@@ -34,8 +36,6 @@ public class Utils {
 		rankToInt.put("Pass", 0);
 	}
 
-
-
 	private static final String[] suitToSymbol = {
 		"♠", "♥", "♦", "♣", "Pass", "NT"};
 
@@ -49,7 +49,7 @@ public class Utils {
 		"Pass", "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"};
 
 	private static final String[] rankToStringBid = {
-		"Pass", "1", "2", "3", "4", "5", "6"};
+		"Pass", "1", "2", "3", "4", "5", "6", "7"};
 
 	public static String rankToStringBid(int rank) {
 		return rankToStringBid[rank];
@@ -81,6 +81,12 @@ public class Utils {
 
 	public static String rankToString(int rank) {
 		return rankToString[rank];
+	}
+
+
+	//Game logs
+	public static void writeLog(Game game) {
+		
 	}
 
 

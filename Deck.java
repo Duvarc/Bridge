@@ -10,7 +10,7 @@ public class Deck {
 		int index = 0;
 		for (int suit = 0; suit < 4; suit++) {
 			for (int rank = 1; rank <= 13; rank++) {
-				deck.add(new Card(suit, rank));
+				deck.add(new Card(rank, suit));
 			}
 		}
 	}

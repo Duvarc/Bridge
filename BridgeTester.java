@@ -7,10 +7,10 @@ public class BridgeTester {
 		Player north = new Player("north");
 		Player east = new Player("east");
 
-		Trick test = new Trick(new Bid(south, "Hearts", 2));
-		test.add(new Play(south, new Card("Spades", 6)));
-		test.add(new Play(west, new Card("Spades", 8)));
-		test.add(new Play(north, new Card("Hearts", "King")));
+		Trick test = new Trick(new Bid(south, 2, "Hearts"));
+		test.add(new Play(south, new Card(6, "Spades")));
+		test.add(new Play(west, new Card(8, "Spades")));
+		test.add(new Play(north, new Card("King", "Hearts")));
 		test.add(new Play(east, new Card("Diamonds", 2)));
 
 		System.out.println(test.getWinner());
@@ -22,11 +22,11 @@ public class BridgeTester {
 		Player north = new Player("north");
 		Player east = new Player("east");
 
-		Trick test = new Trick(new Bid(south, "No Trump", 4));
-		test.add(new Play(south, new Card("Diamonds", 6)));
-		test.add(new Play(west, new Card("Clubs", 8)));
-		test.add(new Play(north, new Card("Spades", "King")));
-		test.add(new Play(east, new Card("Diamonds", 2)));
+		Trick test = new Trick(new Bid(south, 4, "No Trump"));
+		test.add(new Play(south, new Card(6, "Diamonds")));
+		test.add(new Play(west, new Card(8, "Clubs")));
+		test.add(new Play(north, new Card("King", "Spades")));
+		test.add(new Play(east, new Card(2, "Diamonds")));
 
 		System.out.println(test.getWinner());
 	}

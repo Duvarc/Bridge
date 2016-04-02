@@ -4,7 +4,7 @@ import java.util.Collections;
 
 public class HandAnalysis {
 
-	private int pointsHand;
+	private int totalPoints;
 
 	private int highCardPoints;
 
@@ -33,8 +33,6 @@ public class HandAnalysis {
 	}
 
 	public boolean balanced() {
-
-
 		if (pointDistribution == HandData.balanced4333) {
 			return true;
 		}
@@ -55,32 +53,6 @@ public class HandAnalysis {
 	}
 
 	public void calculatePoints() {
-
-		/*for (int s = 0; s < 4; s++) {
-			for (int c = 0; c < hand.get(s).size(); c++) {
-
-				card = hand.get(s).get(c);
-				rank = hand.get(s).get(c).getRank();
-				
-				//Check for high card points - 4-3-2-1 method
-
-				//If card is an ace
-				if (rank == 1) {
-					pointsBySuit[s] += 4;
-				}
-				//Else if card is a King, Queen, or Jack
-				else if (rank >= 11) {
-					pointsBySuit[s] += rank - 10;
-				}
-			}
-
-			//Long suit points - add 1 point for each card over 4 cards
-			int numInSuit = hand.get(s).size();
-			pointsBySuit[s] += Math.max(0, numInSuit - 4);
-		}
-
-		pointsHand = pointsClubs() + pointsDiamonds() + pointsHearts() + pointsSpades();*/
-
 		int suitIndex = 0;
 		for (ArrayList<Card> suit : hand) {
 			for (Card x : suit) {
@@ -98,7 +70,7 @@ public class HandAnalysis {
 			suitIndex++;
 		}
 
-		pointsHand = pointsClubs() + pointsDiamonds() + pointsHearts() + pointsSpades();
+		totalPoints = pointsClubs() + pointsDiamonds() + pointsHearts() + pointsSpades();
 	}
 
 	public void testIterator() {
@@ -129,7 +101,7 @@ public class HandAnalysis {
 	}
 
 	public int pointsHand() {
-		return pointsHand;
+		return totalPoints;
 	}
 
 	public void printAnalysis() {
@@ -139,7 +111,7 @@ public class HandAnalysis {
 		System.out.println("Hearts: " + pointsHearts() + " points");
 		System.out.println("Diamonds: " + pointsDiamonds() + " points");
 		System.out.println("Clubs: " + pointsClubs() + " points");
-		System.out.println("Points total: " + pointsHand + " points");
+		System.out.println("Points total: " + totalPoints + " points");
 		System.out.println("Balanced?: " + balanced());
 	}
 
@@ -150,19 +122,65 @@ public class HandAnalysis {
 		System.out.println("♥ " + pointsHearts() + " points");
 		System.out.println("♦ " + pointsDiamonds() + " points");
 		System.out.println("♣ " + pointsClubs() + " points");
-		System.out.println("Points total: " + pointsHand + " points");
+		System.out.println("Points total: " + totalPoints + " points");
 		System.out.println("Balanced?: " + balanced());
 	}
 
 	public Bid openingBid() {
-		if (balanced()) {
-			if (highCardPoints >= 12 && highCardPoints <= 14) {
-				return new Bid(hand.getOwner(), "No Trump", 1);
+
+		//Standard American Yellow Card
+		Player owner = hand.getOwner();
+		int longestLength = sortedDistribution[3];
+
+		if (totalPoints >= 12 && totalPoints <= 21) {
+			//If balanced and high card points is 20 or 21, bid 2 NT.
+			if (balanced() && highCardPoints == 20 || highCardPoints == 21) {
+				return new Bid(owner, 2, 5);
 			}
-			else if (highCardPoints >= 15 && highCardPoints <= 17) {
-				return new Bid(hand.getOwner(), "No Trump", 1);
+			//If balanced and high card points is 15, 16, or 17, bid 1 NT.
+			else if (balanced() && highCardPoints >= 15) {
+				return new Bid(owner, 1, 5);
+			}
+			//If not balanced
+			else {
+				//If longest length of a suit is 5 or more, bid the longest suit.
+				//If the longest length is less than 5, then we cannot open in major suits
+				//and must go to the minor suits.
+				if (longestLength >= 5) {
+					return new Bid(owner, 1, getSuitOfLength(longestLength));
+				}
+				//If minor suits are 3-3, then bid 1 Clubs - the only case where
+				//the lower suit beats the higher suit when they have equal length
+				else if (sizeDistribution[2] == 3 && sizeDistribution[3] == 3) {
+					return new Bid(owner, 1, 3);
+				}
+				//Else bid the longer of the two minors. Only bid 1 Clubs if number of 
+				//clubs is strictly greater than number of diamonds.
+				else if (sizeDistribution[2] > sizeDistribution[2]) {
+					return new Bid(owner, 1, 3);
+				}
+				//If number of diamonds >= number of clubs, bid 1 Diamonds.
+				else {
+					return new Bid(owner, 1, 2);
+				}
+
+				/*//Less efficient version of above two else if statements
+				else {
+					int longerMinor = Math.max(sizeDistribution[2], sizeDistribution[3]);
+					return new Bid(owner, 1, getSuitOfLength(longerMinor));
+				}*/
 			}
 		}
-		return new Bid(hand.getOwner(), "Spades", 3);
+		return new Bid(owner, 0, 0);
+	}
+
+
+	public int getSuitOfLength(int length) {
+		for (int i = 0; i < 4; i++) {
+			if (sizeDistribution[i] == length) {
+				return i;
+			}
+		}
+		return -1;
 	}
 }

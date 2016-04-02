@@ -7,6 +7,9 @@ TO-DO:
 - Implement basic strategy for playing
 - Read and Write bridge game data
 
+3/25/16
+Impelemented bidding and playing.
+
 3/24/16
 Adding rudimentary rules for opening bid 1 NT. Created a two-way linking between players and hands. Fixed comparison of Bids, which is calculated first by suit (No Trump > Spades > Hearts > Diamonds > Clubs > Pass) and then by rank (Ace....2).
 
