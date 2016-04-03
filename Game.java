@@ -115,9 +115,8 @@ public class Game {
 
 			for (int k = 0; k <= 3; k++) {
 				//Prompt player for card
-				Card currentCard = new Card("Spades", "Ace");
-				Play currentPlay = new Play(currentPlayer, currentCard);
-				t.add(currentPlay);
+				Card currentCard = new Card("Ace", "Spades");
+				t.add(currentPlayer.play(currentCard));
 			}
 
 			Player winner = t.getWinner();

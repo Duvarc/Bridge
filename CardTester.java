@@ -9,14 +9,16 @@ public class CardTester {
 		sample.add(new Card("King", "Hearts"));
 		sample.add(new Card("Jack", "Hearts"));
 		sample.add(new Card(5, "Hearts"));
-		sample.add(new Card("Hearts", 2));
+		sample.add(new Card(2, "Hearts"));
 		sample.add(new Card("Ace", "Diamonds"));
 		sample.add(new Card(6, "Diamonds"));
 		sample.add(new Card(3, "Diamonds"));
 
 		sample.add(new Card("King", "Clubs"));
 		sample.add(new Card("Jack", "Clubs"));
-		sample.add(new Card("King", "Clubs"));
+		sample.add(new Card(3, "Clubs"));
+
+		sample.removeCard(new Card(3, "Clubs"));
 
 		System.out.println(sample);
 

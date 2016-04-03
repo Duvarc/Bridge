@@ -104,6 +104,31 @@ public class Hand implements Iterable<ArrayList<Card>> {
 		}
 	}
 
+	public boolean containsCard(Card card) {
+		return hand.get(card.getSuit()).contains(card.getRank());
+	}
+
+	public void removeCard(Card card) {
+		int cardSuit = card.getSuit();
+		int cardRank = card.getRank();
+
+		for (int i = 0 ; i < hand.get(cardSuit).size(); i++) {
+			if (hand.get(cardSuit).get(i).getRank() == cardRank) {
+				hand.get(cardSuit).remove(i);
+				break;
+			}
+		}
+	}
+
+	public void removeCard(int r, int s) {
+		for (int i = 0 ; i < hand.get(s).size(); i++) {
+			if (hand.get(s).get(i).getRank() == r) {
+				hand.get(s).remove(i);
+				break;
+			}
+		}
+	}
+
 	public Player getOwner() {
 		return owner;
 	}

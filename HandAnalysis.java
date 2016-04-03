@@ -138,7 +138,7 @@ public class HandAnalysis {
 				return new Bid(owner, 2, 5);
 			}
 			//If balanced and high card points is 15, 16, or 17, bid 1 NT.
-			else if (balanced() && highCardPoints >= 15) {
+			else if (balanced() && highCardPoints >= 15 && highCardPoints <= 17) {
 				return new Bid(owner, 1, 5);
 			}
 			//If not balanced
@@ -149,14 +149,12 @@ public class HandAnalysis {
 				if (longestLength >= 5) {
 					return new Bid(owner, 1, getSuitOfLength(longestLength));
 				}
+				//Else bid the longer of the two minors. Only bid 1 Clubs if number of 
+				//clubs is strictly greater than number of diamonds. 
 				//If minor suits are 3-3, then bid 1 Clubs - the only case where
 				//the lower suit beats the higher suit when they have equal length
-				else if (sizeDistribution[2] == 3 && sizeDistribution[3] == 3) {
-					return new Bid(owner, 1, 3);
-				}
-				//Else bid the longer of the two minors. Only bid 1 Clubs if number of 
-				//clubs is strictly greater than number of diamonds.
-				else if (sizeDistribution[2] > sizeDistribution[2]) {
+				else if (sizeDistribution[2] > sizeDistribution[2] ||
+				(sizeDistribution[2] == 3 && sizeDistribution[3] == 3)) {
 					return new Bid(owner, 1, 3);
 				}
 				//If number of diamonds >= number of clubs, bid 1 Diamonds.
@@ -169,6 +167,13 @@ public class HandAnalysis {
 					int longerMinor = Math.max(sizeDistribution[2], sizeDistribution[3]);
 					return new Bid(owner, 1, getSuitOfLength(longerMinor));
 				}*/
+			}
+		}
+		//Over 21 points
+		else {
+			//If balanced and high card points is 25, 26, or 27, bid 3 NT.
+			if (balanced() && highCardPoints >= 25 && highCardPoints <= 27) {
+				return new Bid(owner, 1, 5);
 			}
 		}
 		return new Bid(owner, 0, 0);

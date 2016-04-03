@@ -17,6 +17,8 @@ public class Deck {
 
 	public void shuffle() {
 		Collections.shuffle(deck);
+		Collections.shuffle(deck);
+		Collections.shuffle(deck);
 	}
 
 	public Card get(int index) {

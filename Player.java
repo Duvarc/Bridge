@@ -67,8 +67,9 @@ public class Player {
 		return bid;
 	}
 
-	public void play(Card card) {
-
+	public Play play(Card card) {
+		hand.removeCard(card);
+		return new Play(this, card);
 	}
 
 	public void addTrickWon(Trick t) {
