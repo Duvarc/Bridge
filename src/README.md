@@ -7,6 +7,12 @@ TO-DO:
 - Implement basic strategy for playing
 - Read and Write bridge game data
 
+4/3/16
+Added removeCard() for use in the play() method used to play cards.
+
+4/2/16
+Implemented rudimentary opening bid strategy based on Standard American Yellow Card.
+
 3/25/16
 Impelemented bidding and playing.
 

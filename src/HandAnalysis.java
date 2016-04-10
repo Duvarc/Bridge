@@ -173,7 +173,11 @@ public class HandAnalysis {
 		else {
 			//If balanced and high card points is 25, 26, or 27, bid 3 NT.
 			if (balanced() && highCardPoints >= 25 && highCardPoints <= 27) {
-				return new Bid(owner, 1, 5);
+				return new Bid(owner, 3, 5);
+			}
+			//Bid 2 Clubs for strong hands.
+			else if (totalPoints >= 22) {
+				return new Bid(owner, 2, 3);
 			}
 		}
 		return new Bid(owner, 0, 0);

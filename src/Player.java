@@ -1,16 +1,18 @@
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Random;
 
 public class Player {
 	
-	private String name;
-	private Hand hand;
+	protected String name;
+	protected Hand hand;
 
-	private Player right;
-	private Player left;
-	private Player partner;
+	protected Player right;
+	protected Player left;
+	protected Player partner;
 
-	private ArrayList<Trick> tricksWon;
-	private ArrayList<Bid> bids;
+	protected ArrayList<Trick> tricksWon;
+	protected ArrayList<Bid> bids;
 
 	public Player(String name) {
 		this.name = name;
@@ -71,6 +73,7 @@ public class Player {
 		hand.removeCard(card);
 		return new Play(this, card);
 	}
+
 
 	public void addTrickWon(Trick t) {
 		tricksWon.add(t);

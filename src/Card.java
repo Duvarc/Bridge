@@ -52,6 +52,6 @@ public class Card implements Comparable<Card> {
 	}
 
 	public String toString() {
-		return Utils.rankToString(rank) + " of " + Utils.getSuitWord(getSuit());
+		return Utils.rankToString(rank) + " " + Utils.suitToSymbol(suit);
 	}
 }

@@ -98,6 +98,14 @@ public class Hand implements Iterable<ArrayList<Card>> {
 		hand.get(card.getSuit()).add(card);
 	}
 
+	public ArrayList<Card> get(int suitIndex) {
+		return hand.get(suitIndex);
+	}
+
+	public Card getCard(int suitIndex, int rankIndex) {
+		return hand.get(suitIndex).get(rankIndex);
+	}
+
 	public void sort() {
 		for (int i = 0; i < 4; i++) {
 			Collections.sort(hand.get(i), Collections.reverseOrder());
@@ -105,7 +113,15 @@ public class Hand implements Iterable<ArrayList<Card>> {
 	}
 
 	public boolean containsCard(Card card) {
-		return hand.get(card.getSuit()).contains(card.getRank());
+		int cardSuit = card.getSuit();
+		int cardRank = card.getRank();
+
+		for (int i = 0 ; i < hand.get(cardSuit).size(); i++) {
+			if (hand.get(cardSuit).get(i).getRank() == cardRank) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	public void removeCard(Card card) {
@@ -129,6 +145,15 @@ public class Hand implements Iterable<ArrayList<Card>> {
 		}
 	}
 
+	public Hand combineHand(Hand other) {
+		Hand pool = this;
+		pool.getSpades().addAll(other.getSpades());
+		pool.getHearts().addAll(other.getHearts());
+		pool.getDiamonds().addAll(other.getDiamonds());
+		pool.getClubs().addAll(other.getClubs());
+		return pool;
+	}
+
 	public Player getOwner() {
 		return owner;
 	}
@@ -146,6 +171,7 @@ public class Hand implements Iterable<ArrayList<Card>> {
 		String s ="";
 
 		for (int i = 0; i < 4; i++) {
+			//s += Utils.suitToSymbol(i) + ":";
 			s += Utils.getSuitWord(i) + ":";
 			for (int k = 0; k < hand.get(i).size(); k++) {
 				s += " " + Utils.rankToStringSimple(hand.get(i).get(k).getRank());

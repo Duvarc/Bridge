@@ -1,8 +1,8 @@
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 public class Utils {
-
 	//toString utilies
 
 	private static Map<String, Integer> suitToInt = new HashMap<String, Integer>();
@@ -83,6 +83,44 @@ public class Utils {
 		return rankToString[rank];
 	}
 
+	public static Hand randomHand() {
+		Deck deck = new Deck();
+
+		Hand randomHand = new Hand();
+
+		for (int i = 0; i < 5; i++) {
+			deck.shuffle();
+		}
+
+		for (int i = 0; i <= 12; i++) {
+			randomHand.add(deck.get(i));
+		}
+
+		return randomHand;
+	}
+
+	public static void shuffleArray(int[] array) {
+	    int index;
+	    Random random = new Random();
+	    for (int i = array.length - 1; i > 0; i--)
+	    {
+	        index = random.nextInt(i + 1);
+	        if (index != i)
+	        {
+	            array[index] ^= array[i];
+	            array[i] ^= array[index];
+	            array[index] ^= array[i];
+	        }
+	    }
+	}
+
+	public static int randomSuit() {
+		int[] suits = {0, 1, 2, 3};
+		shuffleArray(suits);
+		shuffleArray(suits);
+		return suits[0];
+
+	}
 
 	//Game logs
 	public static void writeLog(Game game) {

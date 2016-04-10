@@ -4,6 +4,8 @@ public class Trick {
 	
 	private Bid contract;
 	private int firstSuit;
+	private int currentIndex;
+	private int winningIndex;
 	private Player winner = null;
 
 	private ArrayList<Play> trick;
@@ -11,11 +13,36 @@ public class Trick {
 	public Trick(Bid contract) {
 		this.contract = contract;
 		trick = new ArrayList<Play>(4);
+		winningIndex = 0;
+	}
+
+	public int getFirstSuit() {
+		return trick.get(0).getCard().getSuit();
 	}
 
 	public void add(Play play) {
 		trick.add(play);
+		/*if (compare(play, winningPlay()) == 1) {
+			winningIndex = trick.size() - 1;
+		}
+		System.out.println(winningIndex);*/
 	}
+
+	/*public int winningIndex() {
+		return winningIndex;
+	}
+
+	public Play winningPlay() {
+		return trick.get(winningIndex);
+	}
+
+	public Card winningCard() {
+		return trick.get(winningIndex).getCard();
+	}
+
+	public Player getWinner() {
+		return trick.get(winningIndex).getPlayer();
+	}*/
 
 	public Player getWinner() {
 		int maxValue = 0;
